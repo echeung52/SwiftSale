@@ -131,7 +131,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'swiftsale',
         'USER': 'echeung',
-        'PASSWORD':'Washing52!',
+        'PASSWORD': os.environ.get('DB_PASS'),
         'HOST': 'swiftsale-identifier.clcmcogku4dm.us-east-2.rds.amazonaws.com',
         'PORT':'5432'
     }
@@ -206,6 +206,6 @@ STORAGES = {
     },
 }
 
-AWS_SECRET_ACCESS_KEY = 'Rz1ssk2pOxEeALoyBkSL9bkd/pPtJKwMBoCg1HLL'
-AWS_ACCESS_KEY_ID = 'AKIA6GBMGCRJFEDKXKW5'
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_STORAGE_BUCKET_NAME = 'swiftsale'
