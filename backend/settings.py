@@ -24,7 +24,7 @@ import os
 SECRET_KEY = 'django-insecure-(jdp%^!xo@$50d_+y8f=2om379-m#bq2g^b*kz^tx^td5r$(mq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'swiftsale-9a70b7af9133.herokuapp.com']
 

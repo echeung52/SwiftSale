@@ -5,8 +5,6 @@ import "./bootstrap.css";
 import "./main.css";
 import { Provider } from "react-redux";
 import store, { initialState } from "./store";
-
-import { HashRouter } from "react-router-dom";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store} serverState={initialState}>
     <App />
