@@ -24,7 +24,7 @@ import os
 SECRET_KEY = 'django-insecure-(jdp%^!xo@$50d_+y8f=2om379-m#bq2g^b*kz^tx^td5r$(mq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'swiftsale-9a70b7af9133.herokuapp.com']
 
@@ -92,14 +92,15 @@ SIMPLE_JWT = {
 }
 
 MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -131,12 +132,11 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'swiftsale',
         'USER': 'echeung',
-        'PASSWORD': 'Washing52!',
+        'PASSWORD': os.environ.get('DB_PASS'),
         'HOST': 'swiftsale-identifier.clcmcogku4dm.us-east-2.rds.amazonaws.com',
         'PORT':'5432'
     }
 }
-print(os.environ)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -180,7 +180,8 @@ STATICFILES_DIRS = [
     BASE_DIR / 'frontend/dist/assets'
 ]
 
-MEDIA_ROOT = 'static/images'
+MEDIA_ROOT = BASE_DIR / 'static/images'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -206,6 +207,6 @@ STORAGES = {
     },
 }
 
-AWS_SECRET_ACCESS_KEY = 'AKIA6GBMGCRJFEDKXKW5'
-AWS_ACCESS_KEY_ID = 'Rz1ssk2pOxEeALoyBkSL9bkd/pPtJKwMBoCg1HLL'
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_STORAGE_BUCKET_NAME = 'swiftsale'
