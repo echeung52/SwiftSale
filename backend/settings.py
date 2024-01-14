@@ -16,12 +16,41 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 import os
 
+import boto3
+import json
+from botocore.exceptions import ClientError
+def get_secret():
 
+    secret_name = "swiftsale"
+    region_name = "us-east-2"
+
+    # Create a Secrets Manager client
+    session = boto3.session.Session()
+    client = session.client(
+        service_name='secretsmanager',
+        region_name=region_name
+    )
+
+    try:
+        get_secret_value_response = client.get_secret_value(
+            SecretId=secret_name
+        )
+    except ClientError as e:
+        # For a list of exceptions thrown, see
+        # https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_GetSecretValue.html
+        raise e
+
+    secret = get_secret_value_response['SecretString']
+    processed = json.loads(secret)
+    return processed
+
+key = get_secret()
+print(key)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-(jdp%^!xo@$50d_+y8f=2om379-m#bq2g^b*kz^tx^td5r$(mq'
+SECRET_KEY = key['DJANGO_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -132,7 +161,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'swiftsale',
         'USER': 'echeung',
-        'PASSWORD': os.environ.get('DB_PASS'),
+        'PASSWORD': key['DB_PASS'],
         'HOST': 'swiftsale-identifier.clcmcogku4dm.us-east-2.rds.amazonaws.com',
         'PORT':'5432'
     }
@@ -208,37 +237,10 @@ STORAGES = {
 }
 
 
-import boto3
-import json
-from botocore.exceptions import ClientError
 
 
-def get_secret():
 
-    secret_name = "swiftsale"
-    region_name = "us-east-2"
 
-    # Create a Secrets Manager client
-    session = boto3.session.Session()
-    client = session.client(
-        service_name='secretsmanager',
-        region_name=region_name
-    )
-
-    try:
-        get_secret_value_response = client.get_secret_value(
-            SecretId=secret_name
-        )
-    except ClientError as e:
-        # For a list of exceptions thrown, see
-        # https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_GetSecretValue.html
-        raise e
-
-    secret = get_secret_value_response['SecretString']
-    processed = json.loads(secret)
-    return processed
-
-key = get_secret()
 AWS_SECRET_ACCESS_KEY = key['AWS_SECRET_ACCESS_KEY']
 AWS_ACCESS_KEY_ID = key['AWS_ACCESS_KEY_ID']
 AWS_STORAGE_BUCKET_NAME = 'swiftsale'
