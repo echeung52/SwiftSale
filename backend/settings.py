@@ -160,7 +160,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'swiftsale',
         'USER': 'echeung',
-        'PASSWORD': 'Washing52!',
+        'PASSWORD': key['DB_PASS'],
         'HOST': 'swiftsale-identifier.clcmcogku4dm.us-east-2.rds.amazonaws.com',
         'PORT':'5432'
     }
