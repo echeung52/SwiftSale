@@ -207,6 +207,38 @@ STORAGES = {
     },
 }
 
-AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+
+import boto3
+import json
+from botocore.exceptions import ClientError
+
+
+def get_secret():
+
+    secret_name = "swiftsale"
+    region_name = "us-east-2"
+
+    # Create a Secrets Manager client
+    session = boto3.session.Session()
+    client = session.client(
+        service_name='secretsmanager',
+        region_name=region_name
+    )
+
+    try:
+        get_secret_value_response = client.get_secret_value(
+            SecretId=secret_name
+        )
+    except ClientError as e:
+        # For a list of exceptions thrown, see
+        # https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_GetSecretValue.html
+        raise e
+
+    secret = get_secret_value_response['SecretString']
+    processed = json.loads(secret)
+    return processed
+
+key = get_secret()
+AWS_SECRET_ACCESS_KEY = key['AWS_SECRET_ACCESS_KEY']
+AWS_ACCESS_KEY_ID = key['AWS_ACCESS_KEY_ID']
 AWS_STORAGE_BUCKET_NAME = 'swiftsale'
