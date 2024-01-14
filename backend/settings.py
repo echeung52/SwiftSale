@@ -45,7 +45,6 @@ def get_secret():
     return processed
 
 key = get_secret()
-print(key)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -161,7 +160,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'swiftsale',
         'USER': 'echeung',
-        'PASSWORD': key['DB_PASS'],
+        'PASSWORD': 'Washing52!',
         'HOST': 'swiftsale-identifier.clcmcogku4dm.us-east-2.rds.amazonaws.com',
         'PORT':'5432'
     }
