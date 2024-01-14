@@ -54,7 +54,7 @@ SECRET_KEY = key['DJANGO_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'swiftsale-9a70b7af9133.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '18.220.107.176']
 
 
 # Application definition
