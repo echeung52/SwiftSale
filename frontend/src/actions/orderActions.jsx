@@ -27,7 +27,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
     } = getState();
 
     const response = await axios.post(
-      `http://127.0.0.1:8000/api/orders/add/`,
+      `http://18.220.107.176:8000/api/orders/add/`,
       order,
       {
         headers: {
@@ -65,7 +65,7 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
     } = getState();
 
     const response = await axios.get(
-      `http://127.0.0.1:8000/api/orders/${id}/`,
+      `http://18.220.107.176:8000/api/orders/${id}/`,
       {
         headers: {
           "Content-type": "application/json",
@@ -100,7 +100,7 @@ export const payOrder = (id, paymentResult) => async (dispatch, getState) => {
     } = getState();
 
     const response = await axios.put(
-      `http://127.0.0.1:8000/api/orders/${id}/pay/`,
+      `http://18.220.107.176:8000/api/orders/${id}/pay/`,
       paymentResult,
       {
         headers: {
@@ -136,7 +136,7 @@ export const listMyOrders = (id) => async (dispatch, getState) => {
     } = getState();
 
     const response = await axios.get(
-      `http://127.0.0.1:8000/api/orders/myorders/`,
+      `http://18.220.107.176:8000/api/orders/myorders/`,
       {
         headers: {
           "Content-type": "application/json",
