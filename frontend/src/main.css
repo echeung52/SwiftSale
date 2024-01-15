@@ -49,21 +49,12 @@ h2 {
   color: #fff;
 }
 
-.carousel {
-  scroll-snap-type: x mandatory;
-  scroll-padding: 0 24px;
-}
-
-.carousel-item {
-  scroll-snap-align: start;
-}
-
 .carousel img {
   display: block;
-  height: 500px;
+  height: 300px;
   padding: 30px;
   margin: 40px;
-  border-radius: 50%;
+  border-radius: 25%;
   margin-left: auto;
   margin-right: auto;
 }
