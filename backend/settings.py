@@ -55,8 +55,6 @@ SECRET_KEY = key['DJANGO_KEY']
 DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
-SECURE_CROSS_ORIGIN_OPENER_POLICY = None
-
 
 # Application definition
 
