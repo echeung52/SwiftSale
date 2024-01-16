@@ -22,7 +22,7 @@ export const listProducts =
       dispatch({ type: PRODUCT_LIST_REQUEST });
 
       const response = await axios.get(
-        `http://18.220.107.176:8000/api/products${q}`
+        `http://127.0.0.1:8000/api/products${q}`
       );
 
       dispatch({ type: PRODUCT_LIST_SUCCESS, payload: response.data });
@@ -42,7 +42,7 @@ export const listTopProducts = () => async (dispatch) => {
     dispatch({ type: PRODUCT_TOP_REQUEST });
 
     const response = await axios.get(
-      `http://18.220.107.176:8000/api/products/top/`
+      `http://127.0.0.1:8000/api/products/top/`
     );
 
     dispatch({ type: PRODUCT_TOP_SUCCESS, payload: response.data });
@@ -62,7 +62,7 @@ export const listProductsDetails = (id) => async (dispatch) => {
     dispatch({ type: PRODUCT_DETAILS_REQUEST });
 
     const response = await axios.get(
-      `http://18.220.107.176:8000/api/products/${id}`
+      `http://127.0.0.1:8000/api/products/${id}`
     );
 
     dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: response.data });
@@ -89,7 +89,7 @@ export const createProductReview =
       } = getState();
 
       const response = await axios.post(
-        `http://18.220.107.176:8000/api/products/${productId}/reviews`,
+        `http://127.0.0.1:8000/api/products/${productId}/reviews`,
         review,
         {
           headers: {

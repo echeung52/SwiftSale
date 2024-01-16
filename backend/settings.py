@@ -16,45 +16,45 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 import os
 
-import boto3
-import json
-from botocore.exceptions import ClientError
-def get_secret():
 
-    secret_name = "swiftsale"
-    region_name = "us-east-2"
+# import boto3
+# import json
+# from botocore.exceptions import ClientError
+# def get_secret():
 
-    # Create a Secrets Manager client
-    session = boto3.session.Session()
-    client = session.client(
-        service_name='secretsmanager',
-        region_name=region_name
-    )
+#     secret_name = "swiftsale"
+#     region_name = "us-east-2"
 
-    try:
-        get_secret_value_response = client.get_secret_value(
-            SecretId=secret_name
-        )
-    except ClientError as e:
-        # For a list of exceptions thrown, see
-        # https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_GetSecretValue.html
-        raise e
+#     # Create a Secrets Manager client
+#     session = boto3.session.Session()
+#     client = session.client(
+#         service_name='secretsmanager',
+#         region_name=region_name
+#     )
 
-    secret = get_secret_value_response['SecretString']
-    processed = json.loads(secret)
-    return processed
+#     try:
+#         get_secret_value_response = client.get_secret_value(
+#             SecretId=secret_name
+#         )
+#     except ClientError as e:
+#         raise e
 
-key = get_secret()
+#     secret = get_secret_value_response['SecretString']
+#     processed = json.loads(secret)
+#     return processed
+#key = get_secret()
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = key['DJANGO_KEY']
+SECRET_KEY = 'django-insecure-k@-u0+#nxm$jmv)5w91@y80btcx=w4jc-*md$qj^73u(0)i(jx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['18.220.107.176', '127.0.0.1']
+ALLOWED_HOSTS = []
 
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 # Application definition
@@ -157,14 +157,22 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'swiftsale',
-        'USER': 'echeung',
-        'PASSWORD': key['DB_PASS'],
-        'HOST': 'swiftsale-identifier.clcmcogku4dm.us-east-2.rds.amazonaws.com',
-        'PORT':'5432'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'swiftsale',
+#         'USER': '',
+#         'PASSWORD': key['DB_PASS'],
+#         'HOST': key['HOST'],
+#         'PORT':'5432'
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -218,28 +226,23 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_ALL_ORIGINS = True
 
-AWS_QUERYSTRING_AUTH = False
+# AWS_QUERYSTRING_AUTH = False
 
-STORAGES = {
-    "default": {
-        "BACKEND": "storages.backends.s3.S3Storage",
-        "OPTIONS": {
+# STORAGES = {
+#     "default": {
+#         "BACKEND": "storages.backends.s3.S3Storage",
+#         "OPTIONS": {
          
-        },
-    },
-    "staticfiles": {
-        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
-        "OPTIONS": {
+#         },
+#     },
+#     "staticfiles": {
+#         "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+#         "OPTIONS": {
             
-        },
-    },
-}
+#         },
+#     },
+# }
 
-
-
-
-
-
-AWS_SECRET_ACCESS_KEY = key['AWS_SECRET_ACCESS_KEY']
-AWS_ACCESS_KEY_ID = key['AWS_ACCESS_KEY_ID']
-AWS_STORAGE_BUCKET_NAME = 'swiftsale'
+# AWS_SECRET_ACCESS_KEY = key['AWS_SECRET_ACCESS_KEY']
+# AWS_ACCESS_KEY_ID = key['AWS_ACCESS_KEY_ID']
+# AWS_STORAGE_BUCKET_NAME = 'swiftsale'

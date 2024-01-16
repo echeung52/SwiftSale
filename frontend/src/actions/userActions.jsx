@@ -25,7 +25,7 @@ export const login = (email, password) => async (dispatch) => {
     });
 
     const response = await axios.post(
-      "http://18.220.107.176:8000/api/users/login/",
+      "http://127.0.0.1:8000/api/users/login/",
       { username: email, password: password },
       {
         headers: {
@@ -65,7 +65,7 @@ export const register = (name, email, password) => async (dispatch) => {
     });
 
     const response = await axios.post(
-      "http://18.220.107.176:8000/api/users/register/",
+      "http://127.0.0.1:8000/api/users/register/",
       { name: name, email: email, password: password },
       {
         headers: {
@@ -107,7 +107,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
     } = getState();
 
     const response = await axios.get(
-      `http://18.220.107.176:8000/api/users/${id}/`,
+      `http://127.0.0.1:8000/api/users/${id}/`,
       {
         headers: {
           "Content-type": "application/json",
@@ -142,7 +142,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
     } = getState();
 
     const response = await axios.put(
-      `http://18.220.107.176:8000/api/users/profile/update/`,
+      `http://127.0.0.1:8000/api/users/profile/update/`,
       user,
       {
         headers: {
