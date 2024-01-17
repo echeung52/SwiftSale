@@ -1,5 +1,5 @@
 # SwiftSale
-Live Demo: https://swiftsale-9a70b7af9133.herokuapp.com/
+Live Demo: https://swiftsale-9a70b7af9133.herokuapp.com/ <br>
 About
 SwiftSale is a dynamic and user-friendly ecommerce platform designed for buying and selling a wide range of products. This project showcases a comprehensive suite of features to enhance the shopping experience and streamline the selling process.
 
