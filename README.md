@@ -22,7 +22,7 @@ SwiftSale is a dynamic and user-friendly ecommerce platform designed for buying 
 ### Full-Featured Shopping Cart
 - A user-friendly shopping cart that allows customers to easily add, edit, or remove products, view item details, and proceed to checkout.
 
-- ### Secure User Authentication
+### Secure User Authentication
 - Incorporates JSON Web Token (JWT) based authentication to ensure a secure login process. This feature allows users to safely access their accounts, maintaining the integrity and confidentiality of user data. JWT authentication streamlines the user experience by providing seamless access while safeguarding against unauthorized access, ensuring a protected and personalized user environment.
 
 
