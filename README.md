@@ -81,6 +81,7 @@ Before you begin, ensure you have the following installed:
     ```sh
    python manage.py runserver
    ```
-![page1](https://github.com/echeung52/SwiftSale/assets/58400036/07a9835e-72a6-49d6-98c1-e6a30bbecad6)
-![page2](https://github.com/echeung52/SwiftSale/assets/58400036/2e70ac96-5337-46fc-8dfe-07f6c4cc84ff)
-![page3](https://github.com/echeung52/SwiftSale/assets/58400036/c833e2aa-746d-4e51-8306-39f5c80d91fa)
+![page1](https://github.com/echeung52/SwiftSale-Ecommerce/assets/58400036/23b19c49-8f15-4446-b915-9dac6a304ffd)
+![page2](https://github.com/echeung52/SwiftSale-Ecommerce/assets/58400036/bbac1aa7-bbbe-49a5-a6b1-14a2074c56e3)
+![page3](https://github.com/echeung52/SwiftSale-Ecommerce/assets/58400036/100aff75-c955-4f97-be33-334de5cdabc3)
+
