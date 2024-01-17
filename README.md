@@ -37,7 +37,8 @@ SwiftSale is a dynamic and user-friendly ecommerce platform designed for buying 
 - **PostgreSQL:** Open-source object-relational database system for secure and efficient data management.
 
 ### Hosting and Deployment
-- **AWS (Amazon Web Services):** Provides cloud computing resources for hosting the database and deploying the web application.
+- **AWS (Amazon Web Services):**  Utilized for hosting the database and managing secret key storage, ensuring secure and scalable infrastructure for data management.
+- **Heroku:** Employed for deploying the web application, offering a streamlined and efficient platform for application delivery and management.
 
 # Download and Setup Instructions
 
